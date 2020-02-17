@@ -1,38 +1,143 @@
-.App {
+.generic-comp .bg {
+  background-image: url(./Assets-and-Screens/Assets/Background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+h2 {
+  color: white;
+  font-size: 60px;
   text-align: center;
+  font-weight: 500;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.usr-pass-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 90px;
+}
+
+.signup-caption {
+  color: white;
+  font-size: 26px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.signup-caption a {
+  color: #ffe65e;
+  text-decoration: none;
+}
+
+.signup-caption a:hover {
+  text-decoration: underline;
+}
+
+input {
+  border: none;
+  border-bottom: 2px solid white;
+  background: none;
+  color: white;
+  font-size: 20px;
+  outline: none;
+  width: 280px;
+  margin-bottom: 40px;
+}
+
+input[type=file] {
+  display: none;
+}
+
+input[type=file] + label.add-picture-label {
+  color: white;
+  background-color: rgba(100,100,100,0.5);
+  padding: 50px 76px;
+  width: 100px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid #ffe65e;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+input[type=file] + label.add-picture-label:hover {
+  background-color: rgba(100,100,100,0.7);
+}
+
+button {
+  background-color: #ffe65e;
+  font-weight: 500;
+  border: none;
+  border-radius: 100px;
+  padding: 16px 90px;
+  font-size: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.module-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.module-generic {
+  width: 240px;
+  height: 180px;
+  border: 2px solid #ffe65e;
+  border-radius: 5px;
+  margin-bottom: 60px;
+  transition: transform .1s ease;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgba(255,255,255,0.5);
+}
+
+.module-header {
+  text-align: center;
+  background-color: #ffe65e;
+  font-weight: 500;
+  font-size: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.module-generic:hover {
+  transform: scale(1.03);
+}
+
+::-webkit-input-placeholder {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+::-moz-placeholder {
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::-ms-input-placeholder {
+  color: white;
 }
