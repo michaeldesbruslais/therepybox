@@ -1,4 +1,6 @@
 import React from 'react';
+import Weather from './weather'
+import News from './news'
 
 function Dashboard() {
   return (
@@ -9,9 +11,11 @@ function Dashboard() {
       <div className="module-container">
         <div className="module-weather module-generic">
           <div className="module-header">Weather</div>
+          <Weather/>
         </div>
         <div className="module-news module-generic">
           <div className="module-header">News</div>
+          <News/>
         </div>
         <div className="module-sport module-generic">
           <div className="module-header">Sport</div>
