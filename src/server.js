@@ -4,16 +4,18 @@ const cors = require('cors')
 const Parser = require('rss-parser')
 const cheerio = require('cheerio')
 const mysql = require('mysql')
+const bcrypt = require('bcrypt')
+const bodyParser = require('body-parser')
 
 let parser = new Parser()
 const app = express()
 const port = process.env.PORT || 5000
 
 app.use(cors())
-
-app.listen(port, ()=> {
-  console.log(`Server is running on port: ${port}`)
-})
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -27,15 +29,13 @@ connection.connect(err => {
   if(err) console.log(err)
 })
 
-app.get('/users', (req,res) => {//get a user
-  connection.query('SELECT * from users', (err, results) =>{
+app.post('/users', (req,res) => {//get a user
+  let {username, password} = req.body
+  connection.query(`SELECT COUNT(*) from users WHERE username = "${username}" AND password = "${password}"`, (err, results) =>{
     if(err) return err
-    return res.json(results)
+    if(results[0]['COUNT(*)']) return res.json(true)//if user in database, returns 1 (true)
+    else res.json(false)// user not in database
   })
-})
-
-app.post('/users', (req,res)=> {//register a user
-  res.json(req)//send request back to user to check it's submitted properly
 })
 
 app.get('/', (req,res)=> {
@@ -65,3 +65,5 @@ app.get('/get-news-and-img', (req,res)=> {
     }
   })()
 })
+
+app.listen(port, console.log(`Server is running on port: ${port}`))

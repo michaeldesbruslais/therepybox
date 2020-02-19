@@ -16,7 +16,7 @@ class Weather extends Component {
     this.state = {
       icon: '',
       temp: '',
-      location: ''
+      location: 'Loading'
     }
   }
 
